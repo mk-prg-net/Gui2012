@@ -1,0 +1,71 @@
+﻿<Window x:Class="MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="30" />            
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Datei">
+                <MenuItem Header="Beenden" Name="MenuItem1" />
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1">            
+            <Button Name="btnDrawEllipse">
+                <StackPanel>
+                    <Ellipse Height="15" Width="35" Fill="{x:Null}" Stroke="#FFF22A0E" />
+                    <Label>Ellipse</Label>
+                </StackPanel>
+            </Button>
+            <Button Name="btnDrawLine">
+                <StackPanel>
+                    <Line Y1="0" X2="35" Y2="15" Stroke="#FFE51B1B"></Line>
+                    <Label>Linie</Label>
+                </StackPanel>
+            </Button>
+            <Button Name="btnDrawKnick">
+                <StackPanel>
+                    <Canvas Height="16">
+                        <Line Y1="0" X2="16" Y2="15" Stroke="#FFE51B1B"></Line>
+                        <Line X1="16" Y1="15" X2="35" Y2="7" Stroke="#FFE51B1B"></Line>
+                    </Canvas>
+                    <Label>Knick</Label>
+                </StackPanel>
+            </Button>   
+            <Button Name="btnSelectElement">
+                <StackPanel>
+                    <Image Source="/WpfGrafik;component/Images/bearbeiten.png">
+                        
+                    </Image>
+                    
+                </StackPanel>
+            </Button>
+        </ToolBar>
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Canvas Grid.Column="0" Name="Canvas1" ForceCursor="True" Background="Beige" />
+            <StackPanel Grid.Column="1" Background="LightGray">
+                <ToolBar Height="40">
+                    <Button Name="btnClearDrawing">
+                        <Label>
+                            Alle Löschen
+                        </Label>
+                    </Button>
+                </ToolBar>
+                <ListBox Name="lbxDrawingElements"/>                
+            </StackPanel>
+        </Grid>
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <Label Name="lblStatus" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

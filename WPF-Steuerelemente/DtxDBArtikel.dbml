@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="DBArtikel" Class="DtxDBArtikelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TRACS13\SQLSTANDARD08;Initial Catalog=DBArtikel;Integrated Security=True" SettingsObjectName="WPF_Steuerelemente.Properties.Settings" SettingsPropertyName="DBArtikelConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Lieferanten" Member="Lieferanten">
+    <Type Name="Lieferanten">
+      <Column Name="lfnr" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="plz" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Association Name="Lieferanten_Artikel" Member="Artikel" ThisKey="lfnr" OtherKey="lfnr" Type="Artikel" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Artikel" Member="Artikel">
+    <Type Name="Artikel">
+      <Column Name="artnr" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="lfnr" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pnr" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="vorrat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="preis" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Lieferanten_Artikel" Member="Lieferanten" ThisKey="lfnr" OtherKey="lfnr" Type="Lieferanten" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Produkte_Artikel" Member="Produkte" ThisKey="pnr" OtherKey="pnr" Type="Produkte" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Produkte" Member="Produkte">
+    <Type Name="Produkte">
+      <Column Name="pnr" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="Produkte_Artikel" Member="Artikel" ThisKey="pnr" OtherKey="pnr" Type="Artikel" />
+    </Type>
+  </Table>
+</Database>

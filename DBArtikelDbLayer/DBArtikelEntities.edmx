@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBArtikelModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DBArtikelModelStoreContainer">
+          <EntitySet Name="Artikel" EntityType="DBArtikelModel.Store.Artikel" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Lieferanten" EntityType="DBArtikelModel.Store.Lieferanten" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Produkte" EntityType="DBArtikelModel.Store.Produkte" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ArtikelDetailsView" EntityType="DBArtikelModel.Store.ArtikelDetailsView" store:Type="Views" store:Schema="dbo" store:Name="ArtikelDetailsView" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+            <DefiningQuery>SELECT 
+      [ArtikelDetailsView].[artnr] AS [artnr], 
+      [ArtikelDetailsView].[lfnr] AS [lfnr], 
+      [ArtikelDetailsView].[pnr] AS [pnr], 
+      [ArtikelDetailsView].[vorrat] AS [vorrat], 
+      [ArtikelDetailsView].[preis] AS [preis], 
+      [ArtikelDetailsView].[LieferantName] AS [LieferantName], 
+      [ArtikelDetailsView].[LieferantEmail] AS [LieferantEmail], 
+      [ArtikelDetailsView].[LieferantPlz] AS [LieferantPlz], 
+      [ArtikelDetailsView].[ProduktName] AS [ProduktName]
+      FROM [dbo].[ArtikelDetailsView] AS [ArtikelDetailsView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FKeyLieferenaten" Association="DBArtikelModel.Store.FKeyLieferenaten">
+            <End Role="Lieferanten" EntitySet="Lieferanten" />
+            <End Role="Artikel" EntitySet="Artikel" />
+          </AssociationSet>
+          <AssociationSet Name="FKeyProdukte" Association="DBArtikelModel.Store.FKeyProdukte">
+            <End Role="Produkte" EntitySet="Produkte" />
+            <End Role="Artikel" EntitySet="Artikel" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Artikel">
+          <Key>
+            <PropertyRef Name="lfnr" />
+            <PropertyRef Name="pnr" />
+          </Key>
+          <Property Name="artnr" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="lfnr" Type="int" Nullable="false" />
+          <Property Name="pnr" Type="int" Nullable="false" />
+          <Property Name="vorrat" Type="int" />
+          <Property Name="preis" Type="money" />
+        </EntityType>
+        <EntityType Name="Lieferanten">
+          <Key>
+            <PropertyRef Name="lfnr" />
+          </Key>
+          <Property Name="lfnr" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="1000" />
+          <Property Name="email" Type="varchar" MaxLength="1000" />
+          <Property Name="plz" Type="nchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Produkte">
+          <Key>
+            <PropertyRef Name="pnr" />
+          </Key>
+          <Property Name="pnr" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+      Warnung 6002: Für Tabelle/Sicht 'DBArtikel.dbo.ArtikelDetailsView' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.
+      -->
+        <EntityType Name="ArtikelDetailsView">
+          <Key>
+            <PropertyRef Name="artnr" />
+            <PropertyRef Name="lfnr" />
+            <PropertyRef Name="pnr" />
+          </Key>
+          <Property Name="artnr" Type="int" Nullable="false" />
+          <Property Name="lfnr" Type="int" Nullable="false" />
+          <Property Name="pnr" Type="int" Nullable="false" />
+          <Property Name="vorrat" Type="int" />
+          <Property Name="preis" Type="money" />
+          <Property Name="LieferantName" Type="varchar" MaxLength="1000" />
+          <Property Name="LieferantEmail" Type="varchar" MaxLength="1000" />
+          <Property Name="LieferantPlz" Type="nchar" MaxLength="5" />
+          <Property Name="ProduktName" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <Association Name="FKeyLieferenaten">
+          <End Role="Lieferanten" Type="DBArtikelModel.Store.Lieferanten" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Artikel" Type="DBArtikelModel.Store.Artikel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lieferanten">
+              <PropertyRef Name="lfnr" />
+            </Principal>
+            <Dependent Role="Artikel">
+              <PropertyRef Name="lfnr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKeyProdukte">
+          <End Role="Produkte" Type="DBArtikelModel.Store.Produkte" Multiplicity="1" />
+          <End Role="Artikel" Type="DBArtikelModel.Store.Artikel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produkte">
+              <PropertyRef Name="pnr" />
+            </Principal>
+            <Dependent Role="Artikel">
+              <PropertyRef Name="pnr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="lagerbestand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListeAlleArtikelZumLieferanten" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lieferant" Type="varchar" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBArtikelModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DBArtikelEntities">
+          <EntitySet Name="Artikel" EntityType="DBArtikelModel.Artikel" />
+          <EntitySet Name="Lieferanten" EntityType="DBArtikelModel.Lieferanten" />
+          <EntitySet Name="Produkte" EntityType="DBArtikelModel.Produkte" />
+          <EntitySet Name="ArtikelDetailsView" EntityType="DBArtikelModel.ArtikelDetailsView" />
+          <AssociationSet Name="FKeyLieferenaten" Association="DBArtikelModel.FKeyLieferenaten">
+            <End Role="Lieferanten" EntitySet="Lieferanten" />
+            <End Role="Artikel" EntitySet="Artikel" />
+          </AssociationSet>
+          <AssociationSet Name="FKeyProdukte" Association="DBArtikelModel.FKeyProdukte">
+            <End Role="Produkte" EntitySet="Produkte" />
+            <End Role="Artikel" EntitySet="Artikel" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Artikel">
+          <Key>
+            <PropertyRef Name="lfnr" />
+            <PropertyRef Name="pnr" />
+          </Key>
+          <Property Name="artnr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="lfnr" Type="Int32" Nullable="false" />
+          <Property Name="pnr" Type="Int32" Nullable="false" />
+          <Property Name="vorrat" Type="Int32" />
+          <Property Name="preis" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Lieferanten" Relationship="DBArtikelModel.FKeyLieferenaten" FromRole="Artikel" ToRole="Lieferanten" />
+          <NavigationProperty Name="Produkte" Relationship="DBArtikelModel.FKeyProdukte" FromRole="Artikel" ToRole="Produkte" />
+        </EntityType>
+        <EntityType Name="Lieferanten">
+          <Key>
+            <PropertyRef Name="lfnr" />
+          </Key>
+          <Property Name="lfnr" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="plz" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Artikel" Relationship="DBArtikelModel.FKeyLieferenaten" FromRole="Lieferanten" ToRole="Artikel" />
+        </EntityType>
+        <EntityType Name="Produkte">
+          <Key>
+            <PropertyRef Name="pnr" />
+          </Key>
+          <Property Name="pnr" Type="Int32" Nullable="false" />
+          <Property Name="prodName" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Artikel" Relationship="DBArtikelModel.FKeyProdukte" FromRole="Produkte" ToRole="Artikel" />
+        </EntityType>
+        <EntityType Name="ArtikelDetailsView">
+          <Key>
+            <PropertyRef Name="artnr" />
+            <PropertyRef Name="lfnr" />
+            <PropertyRef Name="pnr" />
+          </Key>
+          <Property Name="artnr" Type="Int32" Nullable="false" />
+          <Property Name="lfnr" Type="Int32" Nullable="false" />
+          <Property Name="pnr" Type="Int32" Nullable="false" />
+          <Property Name="vorrat" Type="Int32" />
+          <Property Name="preis" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LieferantName" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="LieferantEmail" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="LieferantPlz" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+          <Property Name="ProduktName" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FKeyLieferenaten">
+          <End Role="Lieferanten" Type="DBArtikelModel.Lieferanten" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Artikel" Type="DBArtikelModel.Artikel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lieferanten">
+              <PropertyRef Name="lfnr" />
+            </Principal>
+            <Dependent Role="Artikel">
+              <PropertyRef Name="lfnr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKeyProdukte">
+          <End Role="Produkte" Type="DBArtikelModel.Produkte" Multiplicity="1" />
+          <End Role="Artikel" Type="DBArtikelModel.Artikel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produkte">
+              <PropertyRef Name="pnr" />
+            </Principal>
+            <Dependent Role="Artikel">
+              <PropertyRef Name="pnr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBArtikelModelStoreContainer" CdmEntityContainer="DBArtikelEntities">
+          <EntitySetMapping Name="Artikel"><EntityTypeMapping TypeName="DBArtikelModel.Artikel"><MappingFragment StoreEntitySet="Artikel">
+            <ScalarProperty Name="artnr" ColumnName="artnr" />
+            <ScalarProperty Name="lfnr" ColumnName="lfnr" />
+            <ScalarProperty Name="pnr" ColumnName="pnr" />
+            <ScalarProperty Name="vorrat" ColumnName="vorrat" />
+            <ScalarProperty Name="preis" ColumnName="preis" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Lieferanten"><EntityTypeMapping TypeName="DBArtikelModel.Lieferanten"><MappingFragment StoreEntitySet="Lieferanten">
+            <ScalarProperty Name="lfnr" ColumnName="lfnr" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="plz" ColumnName="plz" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Produkte"><EntityTypeMapping TypeName="DBArtikelModel.Produkte"><MappingFragment StoreEntitySet="Produkte">
+            <ScalarProperty Name="pnr" ColumnName="pnr" />
+            <ScalarProperty Name="prodName" ColumnName="name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ArtikelDetailsView"><EntityTypeMapping TypeName="DBArtikelModel.ArtikelDetailsView"><MappingFragment StoreEntitySet="ArtikelDetailsView">
+            <ScalarProperty Name="artnr" ColumnName="artnr" />
+            <ScalarProperty Name="lfnr" ColumnName="lfnr" />
+            <ScalarProperty Name="pnr" ColumnName="pnr" />
+            <ScalarProperty Name="vorrat" ColumnName="vorrat" />
+            <ScalarProperty Name="preis" ColumnName="preis" />
+            <ScalarProperty Name="LieferantName" ColumnName="LieferantName" />
+            <ScalarProperty Name="LieferantEmail" ColumnName="LieferantEmail" />
+            <ScalarProperty Name="LieferantPlz" ColumnName="LieferantPlz" />
+            <ScalarProperty Name="ProduktName" ColumnName="ProduktName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FKeyLieferenaten" TypeName="DBArtikelModel.FKeyLieferenaten" StoreEntitySet="Artikel">
+            <EndProperty Name="Lieferanten">
+              <ScalarProperty Name="lfnr" ColumnName="lfnr" />
+            </EndProperty>
+            <EndProperty Name="Artikel">
+              <ScalarProperty Name="lfnr" ColumnName="lfnr" />
+              <ScalarProperty Name="pnr" ColumnName="pnr" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FKeyProdukte" TypeName="DBArtikelModel.FKeyProdukte" StoreEntitySet="Artikel">
+            <EndProperty Name="Produkte">
+              <ScalarProperty Name="pnr" ColumnName="pnr" />
+            </EndProperty>
+            <EndProperty Name="Artikel">
+              <ScalarProperty Name="lfnr" ColumnName="lfnr" />
+              <ScalarProperty Name="pnr" ColumnName="pnr" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DBArtikelEntities">
+        <EntityTypeShape EntityType="DBArtikelModel.Artikel" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBArtikelModel.Lieferanten" Width="1.5" PointX="0.75" PointY="1.125" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBArtikelModel.Produkte" Width="1.5" PointX="5" PointY="1.125" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBArtikelModel.ArtikelDetailsView" Width="1.5" PointX="0.625" PointY="3.625" Height="2.7494921874999996" IsExpanded="true" />
+        <AssociationConnector Association="DBArtikelModel.FKeyLieferenaten" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.1151432291666667" />
+          <ConnectorPoint PointX="3" PointY="2.1151432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="DBArtikelModel.FKeyProdukte" ManuallyRouted="false">
+          <ConnectorPoint PointX="5" PointY="1.9228417968749998" />
+          <ConnectorPoint PointX="4.5" PointY="1.9228417968749998" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

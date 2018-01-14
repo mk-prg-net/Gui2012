@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DMS.FCollect.DirFeatureCollector" Collapsed="true">
+    <Position X="22.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAACAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>DirFeatureCollector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.Extractor&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extractor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.ExtractorBase" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExtractorBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.Feature">
+    <Position X="10.75" Y="0.5" Width="3" />
+    <NestedTypes>
+      <Class Name="DMS.FCollect.Feature.Exc" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Feature.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAhAAAEAEAAAAQAAAAAAAAAAEAAAAIAAAA=</HashCode>
+      <FileName>Feature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureCollector" Collapsed="true">
+    <Position X="24.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="DMS.FCollect.FeatureCollector.Exc" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FeatureCollector.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAgABgAAAAAAABAIAAAAAAIAAAGAAAAA=</HashCode>
+      <FileName>FeatureCollector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureCreationTime" Collapsed="true">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAgAAAEAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeatureCreationTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureFileClass">
+    <Position X="12.75" Y="4" Width="2" />
+    <NestedTypes>
+      <Class Name="DMS.FCollect.FeatureFileClass.Exc" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FeatureFileClass.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAggAAAEAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeatureFileClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureFileExt" Collapsed="true">
+    <Position X="17.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAEAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeatureFileExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureFileName" Collapsed="true">
+    <Position X="1.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAEAEAAAAQAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>FeatureFileName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureIsDir" Collapsed="true">
+    <Position X="8" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAgAAAEAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeatureIsDir.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureKleinbild" Collapsed="true">
+    <Position X="15.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAgAIAEAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeatureKleinbild.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureLastAccessTime" Collapsed="true">
+    <Position X="20" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAgAAAEAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeatureLastAccessTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureLastWriteTime" Collapsed="true">
+    <Position X="3.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAgAAAEAEAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeatureLastWriteTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.FCollect.FeatureSizeInBytes">
+    <Position X="10.25" Y="4" Width="1.75" />
+    <NestedTypes>
+      <Class Name="DMS.FCollect.FeatureSizeInBytes.Exc" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FeatureSizeInBytes.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAEAEAAgAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FeatureSizeInBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

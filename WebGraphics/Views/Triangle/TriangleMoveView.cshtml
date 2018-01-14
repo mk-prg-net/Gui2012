@@ -1,0 +1,87 @@
+﻿@model WebGraphics.Models.DynTriangle
+@{
+    ViewBag.Title = "TriangleMoveView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TriangleMoveView</h2>
+
+@* Konsole *@
+@{
+    var LinkAttributes = new Dictionary<string, object>();
+    LinkAttributes["class"] = "ConsoleLink";
+    LinkAttributes["style"] = "background-color: #f00; color: #fff; font-weight: bolder; width: 80px; text-decoration-style: none; border-style: outset; border-width: 2px; padding-left: 5px; padding-right: 5px; margin-left: 1px";
+
+    var LinkAttributesRight = new Dictionary<string, object>();
+    LinkAttributesRight["style"] = "background-color: #f00; color: #fff; font-weight: bolder; width: 80px; text-decoration-style: none; border-style: outset; border-width: 2px; padding-left: 5px; padding-right: 5px; margin-left: 1px; text-align: right;";
+
+}
+
+<div class="Console" style="background-color: #808080; width: 300px; padding: 5px; float: left;">
+
+
+    <div style="float: left;">
+        @Html.ActionLink(@"\leftUp", "MoveLeftUp", null, LinkAttributes)
+        <br />
+        @Html.ActionLink("<left", "MoveLeft", null, LinkAttributes)
+        <br />
+        @Html.ActionLink("/left", "MoveLeftDown", null, LinkAttributes)
+    </div>
+    <div style="float: left; height: 20px">
+        @Html.ActionLink("up", "MoveUp", null, LinkAttributes)
+    </div>
+    <div style="float: left; height: 20px; vertical-align: bottom">
+        @Html.ActionLink("down", "MoveDown", null, LinkAttributes)
+    </div>
+    <div style="float: left;">
+        @Html.ActionLink("rightUp/", "MoveRightUp", null, LinkAttributesRight)
+        <br />
+        @Html.ActionLink("right>", "MoveRight", null, LinkAttributesRight)
+        <br />
+        @Html.ActionLink(@"rightDown\", "MoveRightDown", null, LinkAttributesRight)
+    </div>
+    <div style="clear: both"></div>
+</div>
+
+@{
+    var ajaxOptions = new AjaxOptions()
+    {
+        OnFailure= "alert('Ajax Aufruf fehlgeschlagen');",
+        OnSuccess = "alert('Es Funkt');",
+        UpdateTargetId = "canTriangel",
+        InsertionMode = InsertionMode.Replace,
+        
+    
+    };
+}
+
+<div class="Console" style="background-color: #808080; width: 200px; padding: 5px; float: left;">
+    <div style="float: left; height: 20px">
+        
+        @Ajax.ActionLink("<leftAsync", "MoveLeft", null, ajaxOptions ,LinkAttributes)
+
+        @*
+        @Html.ActionLink("<leftAsync", "MoveLeftAjax", null ,LinkAttributes)
+        *@
+
+    </div>
+</div>
+@* Zeichenfläche *@
+<div style="clear: both">
+    <canvas width="1000" height="500" id="canTriangel" style="background-color: #0ff" />
+
+    @{
+        var canTriangle = new mkoIt.Asp.HtmlCtrl.Canvas("canTriangel");
+        var plotter = new mko.Graphic.WebClient.CanvasPlotter(canTriangle.ScriptBld);
+
+        Model.Triangle.draw(plotter);
+
+        var ScriptBlock = new MvcHtmlString(canTriangle.ScriptBld.CreateMSAjaxPageLoadEventHandler(plotter.GetScript(true), true));
+    }
+</div>
+@ScriptBlock
+@*
+   Mit der folgenden Anweisung werden <script>- Tags erzeugt, welche die benötigten Scriptdateien
+   vom WebServer laden
+*@
+@Scripts.Render("~/Scripts/MSAjax/MicrosoftAjax.debug.js", "~/Scripts/mko/HtmlCanvas.js")

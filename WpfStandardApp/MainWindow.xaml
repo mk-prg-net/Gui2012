@@ -1,0 +1,73 @@
+﻿<Window x:Class="WpfStandardApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ImageBrush x:Key="brBook" ImageSource="/WpfStandardApp;component/Images/Book_Green_48x48.png" />
+        <ImageBrush x:Key="brVideo" ImageSource="/WpfStandardApp;component/Images/GenericMovieClip.png" />
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20px"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="23" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Click="MenuItem_Click" />
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Grid.Column="0" Name="tbxPath"/>
+            <Button Grid.Row="0" Grid.Column="1" Width="100" Click="Button_Click">
+                <Button.Content>
+                    <Image Source="/WpfStandardApp;component/Images/112_RefreshArrow_Blue_16x16_72.png" />
+                </Button.Content>
+            </Button>
+        </Grid>
+        
+        <TreeView Grid.Row="2" Grid.Column="0" Name="trvAll">
+            <TreeViewItem Name="All">
+            </TreeViewItem>
+        </TreeView>
+        <ListView  Name="LstAll"/>
+        <Rectangle Grid.Row="2"
+                   Grid.Column="1"
+                   Name="Rectangle1"
+                   Stroke="Black"
+                   Margin="0,0,0,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1,0.5"
+                                     StartPoint="0,0.5">
+                    <GradientStop Color="Green"
+                                  Offset="0" />
+                    <GradientStop Color="Yellow"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Image Name="imgViewer" Height="500"/>
+        </StackPanel>
+        <StatusBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <StatusBarItem >
+                <StatusBarItem.Content>
+                    <Label Name="lblStatus"/>
+                </StatusBarItem.Content>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

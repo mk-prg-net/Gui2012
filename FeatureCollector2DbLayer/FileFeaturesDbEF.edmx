@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FileFeaturesDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FileFeaturesDbModelStoreContainer">
+          <EntitySet Name="BasicFeatures" EntityType="FileFeaturesDbModel.Store.BasicFeatures" store:Type="Tables" Schema="compact" />
+          <EntitySet Name="FileClasses" EntityType="FileFeaturesDbModel.Store.FileClasses" store:Type="Tables" Schema="compact" />
+          <EntitySet Name="FilePaths" EntityType="FileFeaturesDbModel.Store.FilePaths" store:Type="Tables" Schema="compact" />
+          <EntitySet Name="files" EntityType="FileFeaturesDbModel.Store.files" store:Type="Tables" Schema="compact" />
+          <EntitySet Name="images" EntityType="FileFeaturesDbModel.Store.images" store:Type="Tables" Schema="compact" />
+          <AssociationSet Name="FK_BasicFeatures_FileClasses" Association="FileFeaturesDbModel.Store.FK_BasicFeatures_FileClasses">
+            <End Role="FileClasses" EntitySet="FileClasses" />
+            <End Role="BasicFeatures" EntitySet="BasicFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BasicFeatures_files" Association="FileFeaturesDbModel.Store.FK_BasicFeatures_files">
+            <End Role="files" EntitySet="files" />
+            <End Role="BasicFeatures" EntitySet="BasicFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_files_FilePaths_Dir" Association="FileFeaturesDbModel.Store.FK_files_FilePaths_Dir">
+            <End Role="FilePaths" EntitySet="FilePaths" />
+            <End Role="files" EntitySet="files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_files_FilePaths_files" Association="FileFeaturesDbModel.Store.FK_files_FilePaths_files">
+            <End Role="FilePaths" EntitySet="FilePaths" />
+            <End Role="files" EntitySet="files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_files_FilePaths_SuperDir" Association="FileFeaturesDbModel.Store.FK_files_FilePaths_SuperDir">
+            <End Role="FilePaths" EntitySet="FilePaths" />
+            <End Role="files" EntitySet="files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_images_files" Association="FileFeaturesDbModel.Store.FK_images_files">
+            <End Role="files" EntitySet="files" />
+            <End Role="images" EntitySet="images" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BasicFeatures">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fkey_id_files" Type="int" />
+          <Property Name="LastAccesssTime" Type="date" />
+          <Property Name="LastWriteTime" Type="date" />
+          <Property Name="CreationTime" Type="date" />
+          <Property Name="SizeInBytes" Type="bigint" />
+          <Property Name="fkey_FileClass" Type="int" />
+        </EntityType>
+        <EntityType Name="FileClasses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FilePaths">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="path" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="uid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="files">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="file_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="dir_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="super_dir_uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fkey_file_id" Type="int" Nullable="false" />
+          <Property Name="fkey_dir_id" Type="int" Nullable="false" />
+          <Property Name="fkey_super_dir_id" Type="int" />
+          <Property Name="keywords" Type="nvarchar" MaxLength="1000" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="rating_up" Type="int" Nullable="false" />
+          <Property Name="rating_down" Type="int" Nullable="false" />
+          <Property Name="filename" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="images">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fkey_id_files" Type="int" Nullable="false" />
+          <Property Name="img" Type="varbinary(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar" Nullable="false" MaxLength="1000" />
+        </EntityType>
+        <Association Name="FK_BasicFeatures_FileClasses">
+          <End Role="FileClasses" Type="FileFeaturesDbModel.Store.FileClasses" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicFeatures" Type="FileFeaturesDbModel.Store.BasicFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileClasses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BasicFeatures">
+              <PropertyRef Name="fkey_FileClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BasicFeatures_files">
+          <End Role="files" Type="FileFeaturesDbModel.Store.files" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicFeatures" Type="FileFeaturesDbModel.Store.BasicFeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BasicFeatures">
+              <PropertyRef Name="fkey_id_files" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_files_FilePaths_Dir">
+          <End Role="FilePaths" Type="FileFeaturesDbModel.Store.FilePaths" Multiplicity="1" />
+          <End Role="files" Type="FileFeaturesDbModel.Store.files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePaths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="files">
+              <PropertyRef Name="fkey_dir_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_files_FilePaths_files">
+          <End Role="FilePaths" Type="FileFeaturesDbModel.Store.FilePaths" Multiplicity="1" />
+          <End Role="files" Type="FileFeaturesDbModel.Store.files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePaths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="files">
+              <PropertyRef Name="fkey_file_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_files_FilePaths_SuperDir">
+          <End Role="FilePaths" Type="FileFeaturesDbModel.Store.FilePaths" Multiplicity="0..1" />
+          <End Role="files" Type="FileFeaturesDbModel.Store.files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePaths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="files">
+              <PropertyRef Name="fkey_super_dir_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_images_files">
+          <End Role="files" Type="FileFeaturesDbModel.Store.files" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="images" Type="FileFeaturesDbModel.Store.images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="images">
+              <PropertyRef Name="fkey_id_files" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FileFeaturesDbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FileFeaturesDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BasicFeatures" EntityType="FileFeaturesDbModel.BasicFeature" />
+          <EntitySet Name="FileClasses" EntityType="FileFeaturesDbModel.FileClass" />
+          <EntitySet Name="FilePaths" EntityType="FileFeaturesDbModel.FilePath" />
+          <EntitySet Name="Files" EntityType="FileFeaturesDbModel.File" />
+          <AssociationSet Name="FK_BasicFeatures_FileClasses" Association="FileFeaturesDbModel.FK_BasicFeatures_FileClasses">
+            <End Role="FileClasses" EntitySet="FileClasses" />
+            <End Role="BasicFeatures" EntitySet="BasicFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BasicFeatures_files" Association="FileFeaturesDbModel.FK_BasicFeatures_files">
+            <End Role="files" EntitySet="Files" />
+            <End Role="BasicFeatures" EntitySet="BasicFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_files_FilePaths_Dir" Association="FileFeaturesDbModel.FK_files_FilePaths_Dir">
+            <End Role="FilePaths" EntitySet="FilePaths" />
+            <End Role="files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_files_FilePaths_files" Association="FileFeaturesDbModel.FK_files_FilePaths_files">
+            <End Role="FilePaths" EntitySet="FilePaths" />
+            <End Role="files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_files_FilePaths_SuperDir" Association="FileFeaturesDbModel.FK_files_FilePaths_SuperDir">
+            <End Role="FilePaths" EntitySet="FilePaths" />
+            <End Role="files" EntitySet="Files" />
+          </AssociationSet>
+          <EntitySet Name="images" EntityType="FileFeaturesDbModel.image" />
+          <AssociationSet Name="FK_images_files" Association="FileFeaturesDbModel.FK_images_files">
+            <End Role="File" EntitySet="Files" />
+            <End Role="image" EntitySet="images" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BasicFeature">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="fkey_id_files" Type="Int32" />
+          <Property Name="LastAccesssTime" Type="DateTime" />
+          <Property Name="LastWriteTime" Type="DateTime" />
+          <Property Name="CreationTime" Type="DateTime" />
+          <Property Name="SizeInBytes" Type="Int64" />
+          <Property Name="fkey_FileClass" Type="Int32" />
+          <NavigationProperty Name="FileClass" Relationship="FileFeaturesDbModel.FK_BasicFeatures_FileClasses" FromRole="BasicFeatures" ToRole="FileClasses" />
+          <NavigationProperty Name="File" Relationship="FileFeaturesDbModel.FK_BasicFeatures_files" FromRole="BasicFeatures" ToRole="files" />
+        </EntityType>
+        <EntityType Name="FileClass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="BasicFeatures" Relationship="FileFeaturesDbModel.FK_BasicFeatures_FileClasses" FromRole="FileClasses" ToRole="BasicFeatures" />
+        </EntityType>
+        <EntityType Name="FilePath">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="path" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="uid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Dirs" Relationship="FileFeaturesDbModel.FK_files_FilePaths_Dir" FromRole="FilePaths" ToRole="files" />
+          <NavigationProperty Name="Files" Relationship="FileFeaturesDbModel.FK_files_FilePaths_files" FromRole="FilePaths" ToRole="files" />
+          <NavigationProperty Name="SuperDirs" Relationship="FileFeaturesDbModel.FK_files_FilePaths_SuperDir" FromRole="FilePaths" ToRole="files" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="file_uid" Type="Guid" Nullable="false" />
+          <Property Name="dir_uid" Type="Guid" Nullable="false" />
+          <Property Name="super_dir_uid" Type="Guid" Nullable="false" />
+          <Property Name="fkey_file_id" Type="Int32" Nullable="false" />
+          <Property Name="fkey_dir_id" Type="Int32" Nullable="false" />
+          <Property Name="fkey_super_dir_id" Type="Int32" />
+          <NavigationProperty Name="BasicFeatures" Relationship="FileFeaturesDbModel.FK_BasicFeatures_files" FromRole="files" ToRole="BasicFeatures" />
+          <NavigationProperty Name="Dir" Relationship="FileFeaturesDbModel.FK_files_FilePaths_Dir" FromRole="files" ToRole="FilePaths" />
+          <NavigationProperty Name="FilePath" Relationship="FileFeaturesDbModel.FK_files_FilePaths_files" FromRole="files" ToRole="FilePaths" />
+          <NavigationProperty Name="Superdir" Relationship="FileFeaturesDbModel.FK_files_FilePaths_SuperDir" FromRole="files" ToRole="FilePaths" />
+          <Property Type="String" Name="filename" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="images" Relationship="FileFeaturesDbModel.FK_images_files" FromRole="File" ToRole="image" />
+          <Property Type="String" Name="keywords" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="rating_up" Nullable="false" />
+          <Property Type="Int32" Name="rating_down" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BasicFeatures_FileClasses">
+          <End Role="FileClasses" Type="FileFeaturesDbModel.FileClass" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicFeatures" Type="FileFeaturesDbModel.BasicFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileClasses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BasicFeatures">
+              <PropertyRef Name="fkey_FileClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BasicFeatures_files">
+          <End Role="files" Type="FileFeaturesDbModel.File" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicFeatures" Type="FileFeaturesDbModel.BasicFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="files">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BasicFeatures">
+              <PropertyRef Name="fkey_id_files" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_files_FilePaths_Dir">
+          <End Role="FilePaths" Type="FileFeaturesDbModel.FilePath" Multiplicity="1" />
+          <End Role="files" Type="FileFeaturesDbModel.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePaths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="files">
+              <PropertyRef Name="fkey_dir_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_files_FilePaths_files">
+          <End Role="FilePaths" Type="FileFeaturesDbModel.FilePath" Multiplicity="1" />
+          <End Role="files" Type="FileFeaturesDbModel.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePaths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="files">
+              <PropertyRef Name="fkey_file_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_files_FilePaths_SuperDir">
+          <End Role="FilePaths" Type="FileFeaturesDbModel.FilePath" Multiplicity="0..1" />
+          <End Role="files" Type="FileFeaturesDbModel.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePaths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="files">
+              <PropertyRef Name="fkey_super_dir_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="fkey_id_files" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="File" Relationship="FileFeaturesDbModel.FK_images_files" FromRole="image" ToRole="File" />
+          <Property Type="Binary" Name="img" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_images_files">
+          <End Type="FileFeaturesDbModel.File" Role="File" Multiplicity="1" />
+          <End Type="FileFeaturesDbModel.image" Role="image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="File">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="image">
+              <PropertyRef Name="fkey_id_files" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FileFeaturesDbModelStoreContainer" CdmEntityContainer="FileFeaturesDbEntities">
+          <EntitySetMapping Name="BasicFeatures"><EntityTypeMapping TypeName="FileFeaturesDbModel.BasicFeature"><MappingFragment StoreEntitySet="BasicFeatures">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="fkey_id_files" ColumnName="fkey_id_files" />
+            <ScalarProperty Name="LastAccesssTime" ColumnName="LastAccesssTime" />
+            <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
+            <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+            <ScalarProperty Name="SizeInBytes" ColumnName="SizeInBytes" />
+            <ScalarProperty Name="fkey_FileClass" ColumnName="fkey_FileClass" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FileClasses"><EntityTypeMapping TypeName="FileFeaturesDbModel.FileClass"><MappingFragment StoreEntitySet="FileClasses">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FilePaths"><EntityTypeMapping TypeName="FileFeaturesDbModel.FilePath"><MappingFragment StoreEntitySet="FilePaths">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="path" ColumnName="path" />
+            <ScalarProperty Name="uid" ColumnName="uid" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Files"><EntityTypeMapping TypeName="FileFeaturesDbModel.File"><MappingFragment StoreEntitySet="files">
+            <ScalarProperty Name="rating_down" ColumnName="rating_down" />
+                <ScalarProperty Name="rating_up" ColumnName="rating_up" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="file_uid" ColumnName="file_uid" />
+            <ScalarProperty Name="dir_uid" ColumnName="dir_uid" />
+            <ScalarProperty Name="super_dir_uid" ColumnName="super_dir_uid" />
+            <ScalarProperty Name="fkey_file_id" ColumnName="fkey_file_id" />
+            <ScalarProperty Name="fkey_dir_id" ColumnName="fkey_dir_id" />
+            <ScalarProperty Name="fkey_super_dir_id" ColumnName="fkey_super_dir_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="images">
+            <EntityTypeMapping TypeName="FileFeaturesDbModel.image">
+              <MappingFragment StoreEntitySet="images">
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="fkey_id_files" ColumnName="fkey_id_files" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="FileFeaturesDbEF">
+        <EntityTypeShape EntityType="FileFeaturesDbModel.BasicFeature" Width="1.5" PointX="4.75" PointY="1.125" Height="2.4442187142372127" IsExpanded="true" />
+        <EntityTypeShape EntityType="FileFeaturesDbModel.FileClass" Width="1.5" PointX="6.75" PointY="1.625" Height="1.4430468571186061" IsExpanded="true" />
+        <EntityTypeShape EntityType="FileFeaturesDbModel.FilePath" Width="1.5" PointX="0.5" PointY="1.375" Height="1.9436327856779094" IsExpanded="true" />
+        <EntityTypeShape EntityType="FileFeaturesDbModel.File" Width="1.625" PointX="2.625" PointY="1" Height="3.5186979166666656" IsExpanded="true" />
+        <AssociationConnector Association="FileFeaturesDbModel.FK_BasicFeatures_FileClasses" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="2.3465234285593031" />
+          <ConnectorPoint PointX="6.25" PointY="2.3465234285593031" />
+        </AssociationConnector>
+        <AssociationConnector Association="FileFeaturesDbModel.FK_BasicFeatures_files" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.25" PointY="2.49974609375" />
+          <ConnectorPoint PointX="4.75" PointY="2.49974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="FileFeaturesDbModel.FK_files_FilePaths_Dir" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="2.4040551690757272" />
+          <ConnectorPoint PointX="2.625" PointY="2.4040551690757272" />
+        </AssociationConnector>
+        <AssociationConnector Association="FileFeaturesDbModel.FK_files_FilePaths_files" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="1.8270275845378636" />
+          <ConnectorPoint PointX="2.625" PointY="1.8270275845378636" />
+        </AssociationConnector>
+        <AssociationConnector Association="FileFeaturesDbModel.FK_files_FilePaths_SuperDir" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="3.0383215298503634" />
+          <ConnectorPoint PointX="2.625" PointY="3.0383215298503634" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FileFeaturesDbModel.image" Width="1.5" PointX="4.75" PointY="4.125" Height="1.9802864583333335" />
+        <AssociationConnector Association="FileFeaturesDbModel.FK_images_files" >
+          <ConnectorPoint PointX="4.25" PointY="4.3218489583333328" />
+          <ConnectorPoint PointX="4.75" PointY="4.3218489583333328" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

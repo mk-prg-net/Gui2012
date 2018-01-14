@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DtxDBArtikel">
+  <DataContextMoniker Name="/DtxDBArtikelDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e8e7691c-8da6-4d7b-a383-8b250560bc78" absoluteBounds="0.625, 1.375, 2, 1.4386783690253895">
+      <DataClassMoniker Name="/DtxDBArtikelDataContext/Lieferanten" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a4e494f-53ef-40d1-b2d4-8fd3b739f6c8" absoluteBounds="0.64, 1.835, 1.9700000000000002, 0.87867836902538943" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d0e76a2a-89ec-40bb-8c4f-faf040f21c36" absoluteBounds="3, 2.25, 2, 1.6055403452118235">
+      <DataClassMoniker Name="/DtxDBArtikelDataContext/Artikel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a06901c4-c22f-424d-90f8-f8a18b101e83" absoluteBounds="3.015, 2.71, 1.9700000000000002, 1.0455403452118237" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 2.53183918451269); (3 : 2.53183918451269)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DtxDBArtikelDataContext/Lieferanten/Lieferanten_Artikel" />
+      <nodes>
+        <classShapeMoniker Id="e8e7691c-8da6-4d7b-a383-8b250560bc78" />
+        <classShapeMoniker Id="d0e76a2a-89ec-40bb-8c4f-faf040f21c36" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b88c6b11-7e4e-4be6-b2b9-5d84aa61c528" absoluteBounds="5.25, 1.5, 2, 1.1049544166525205">
+      <DataClassMoniker Name="/DtxDBArtikelDataContext/Produkte" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df7c050d-62e1-44e1-8c14-7df8215dab3c" absoluteBounds="5.265, 1.96, 1.9700000000000002, 0.54495441665252042" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.25 : 2.42747720832626); (5 : 2.42747720832626)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DtxDBArtikelDataContext/Produkte/Produkte_Artikel" />
+      <nodes>
+        <classShapeMoniker Id="b88c6b11-7e4e-4be6-b2b9-5d84aa61c528" />
+        <classShapeMoniker Id="d0e76a2a-89ec-40bb-8c4f-faf040f21c36" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

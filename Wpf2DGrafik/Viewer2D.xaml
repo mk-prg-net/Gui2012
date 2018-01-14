@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="Wpf2DGrafik.Viewer2D"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Height="300"
+             Width="300"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <Grid x:Name="grdMain" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <!-- Menü -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Open Xaml File"
+                          Name="mnuOpenXaml"
+                          Click="mnuOpenXaml_Click" />
+                <MenuItem Header="Save Xaml File"
+                          Name="mnuSaveXaml"
+                          Click="mnuSaveXaml_Click" />
+            </MenuItem>
+            <MenuItem Header="Zeichnung">
+                <MenuItem Header="Löschen"
+                          Name="mnuClearZeichnung"
+                          Click="mnuClearZeichnung_Click" />
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1" Grid.ColumnSpan="1">
+            <Button Name="btnDrawEllipse"
+                    Click="btnDrawEllipse_Click">
+                <StackPanel>
+                    <Ellipse Height="15"
+                             Width="35"
+                             Fill="{x:Null}"
+                             Stroke="#FFF22A0E" />
+                    <Label>Ellipse</Label>
+                </StackPanel>
+            </Button>
+            <Button Name="btnDrawLine"
+                    Click="btnDrawLine_Click">
+                <StackPanel>
+                    <Line Y1="0"
+                          X2="35"
+                          Y2="15"
+                          Stroke="#FFE51B1B"></Line>
+                    <Label>Linie</Label>
+                </StackPanel>
+            </Button>
+            <Button Name="btnDrawKnick"
+                    Click="btnDrawKnick_Click">
+                <StackPanel>
+                    <Canvas Height="16">
+                        <Line Y1="0"
+                              X2="16"
+                              Y2="15"
+                              Stroke="#FFE51B1B"></Line>
+                        <Line X1="16"
+                              Y1="15"
+                              X2="35"
+                              Y2="7"
+                              Stroke="#FFE51B1B"></Line>
+                    </Canvas>
+                    <Label>Knick</Label>
+                </StackPanel>
+            </Button>
+            <Button Name="btnSelectElement">
+                <StackPanel>
+                    <Image Source="/WpfGrafik;component/Images/bearbeiten.png">
+
+                    </Image>
+
+                </StackPanel>
+            </Button>
+        </ToolBar>
+        <!-- Zeichenbereich: in diesem ist dynamisch ein Canvas Element einzufügen -->
+        <Canvas Grid.Row="2"
+                ForceCursor="True"
+                Background="Aqua"
+                Name="mainCanvas"
+                MouseDown="mainCanvas_MouseDown"/>
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="3">
+            <StatusBarItem x:Name="statusBarText"
+                           Width="100" />
+            <ProgressBar x:Name="progBarStatus"
+                         Height="20"
+                         Minimum="0"
+                         Maximum="100"
+                         Width="100" />
+            <StatusBarItem x:Name="statusBarShapeCount"
+                           Width="100"
+                           Content="# 0" />
+        </StatusBar>
+    </Grid>
+</UserControl>

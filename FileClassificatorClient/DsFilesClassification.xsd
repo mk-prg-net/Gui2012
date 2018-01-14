@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsFilesClassification" targetNamespace="http://tempuri.org/DsFilesClassification.xsd" xmlns:mstns="http://tempuri.org/DsFilesClassification.xsd" xmlns="http://tempuri.org/DsFilesClassification.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsFilesClassification" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DsFilesClassification" msprop:Generator_UserDSName="DsFilesClassification" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ContentVec" msprop:Generator_UserTableName="ContentVec" msprop:Generator_RowDeletedName="ContentVecRowDeleted" msprop:Generator_TableClassName="ContentVecDataTable" msprop:Generator_RowChangedName="ContentVecRowChanged" msprop:Generator_RowClassName="ContentVecRow" msprop:Generator_RowChangingName="ContentVecRowChanging" msprop:Generator_RowEvArgName="ContentVecRowChangeEvent" msprop:Generator_RowEvHandlerName="ContentVecRowChangeEventHandler" msprop:Generator_TablePropName="ContentVec" msprop:Generator_TableVarName="tableContentVec" msprop:Generator_RowDeletingName="ContentVecRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="depth" msprop:Generator_UserColumnName="depth" msprop:Generator_ColumnPropNameInRow="depth" msprop:Generator_ColumnVarNameInTable="columndepth" msprop:Generator_ColumnPropNameInTable="depthColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="path" msprop:Generator_UserColumnName="path" msprop:Generator_ColumnPropNameInRow="path" msprop:Generator_ColumnVarNameInTable="columnpath" msprop:Generator_ColumnPropNameInTable="pathColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FileCount" msprop:Generator_UserColumnName="FileCount" msprop:Generator_ColumnPropNameInRow="FileCount" msprop:Generator_ColumnVarNameInTable="columnFileCount" msprop:Generator_ColumnPropNameInTable="FileCountColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SumFilesSize" msprop:Generator_UserColumnName="SumFilesSize" msprop:Generator_ColumnPropNameInRow="SumFilesSize" msprop:Generator_ColumnVarNameInTable="columnSumFilesSize" msprop:Generator_ColumnPropNameInTable="SumFilesSizeColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="ArchiveBitSetCount" msprop:Generator_UserColumnName="ArchiveBitSetCount" msprop:Generator_ColumnPropNameInRow="ArchiveBitSetCount" msprop:Generator_ColumnVarNameInTable="columnArchiveBitSetCount" msprop:Generator_ColumnPropNameInTable="ArchiveBitSetCountColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SumArchiveBitFileSize" msprop:Generator_UserColumnName="SumArchiveBitFileSize" msprop:Generator_ColumnPropNameInRow="SumArchiveBitFileSize" msprop:Generator_ColumnVarNameInTable="columnSumArchiveBitFileSize" msprop:Generator_ColumnPropNameInTable="SumArchiveBitFileSizeColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="FotosCount" msprop:Generator_UserColumnName="FotosCount" msprop:Generator_ColumnPropNameInRow="FotosCount" msprop:Generator_ColumnVarNameInTable="columnFotosCount" msprop:Generator_ColumnPropNameInTable="FotosCountColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SumFotosSize" msprop:Generator_UserColumnName="SumFotosSize" msprop:Generator_ColumnPropNameInRow="SumFotosSize" msprop:Generator_ColumnVarNameInTable="columnSumFotosSize" msprop:Generator_ColumnPropNameInTable="SumFotosSizeColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="OfficeCount" msprop:Generator_UserColumnName="OfficeCount" msprop:Generator_ColumnPropNameInRow="OfficeCount" msprop:Generator_ColumnVarNameInTable="columnOfficeCount" msprop:Generator_ColumnPropNameInTable="OfficeCountColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SumOfficeFilesSize" msprop:Generator_UserColumnName="SumOfficeFilesSize" msprop:Generator_ColumnPropNameInRow="SumOfficeFilesSize" msprop:Generator_ColumnVarNameInTable="columnSumOfficeFilesSize" msprop:Generator_ColumnPropNameInTable="SumOfficeFilesSizeColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="OtherCount" msprop:Generator_UserColumnName="OtherCount" msprop:Generator_ColumnPropNameInRow="OtherCount" msprop:Generator_ColumnVarNameInTable="columnOtherCount" msprop:Generator_ColumnPropNameInTable="OtherCountColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SumOtherFilesSize" msprop:Generator_UserColumnName="SumOtherFilesSize" msprop:Generator_ColumnPropNameInRow="SumOtherFilesSize" msprop:Generator_ColumnVarNameInTable="columnSumOtherFilesSize" msprop:Generator_ColumnPropNameInTable="SumOtherFilesSizeColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SourceCodeCount" msprop:Generator_UserColumnName="SourceCodeCount" msprop:Generator_ColumnPropNameInRow="SourceCodeCount" msprop:Generator_ColumnVarNameInTable="columnSourceCodeCount" msprop:Generator_ColumnPropNameInTable="SourceCodeCountColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SumSourceCodeFilesSize" msprop:Generator_UserColumnName="SumSourceCodeFilesSize" msprop:Generator_ColumnPropNameInRow="SumSourceCodeFilesSize" msprop:Generator_ColumnVarNameInTable="columnSumSourceCodeFilesSize" msprop:Generator_ColumnPropNameInTable="SumSourceCodeFilesSizeColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="VideosCount" msprop:Generator_UserColumnName="VideosCount" msprop:Generator_ColumnPropNameInRow="VideosCount" msprop:Generator_ColumnVarNameInTable="columnVideosCount" msprop:Generator_ColumnPropNameInTable="VideosCountColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SumVideosFilesSize" msprop:Generator_UserColumnName="SumVideosFilesSize" msprop:Generator_ColumnPropNameInRow="SumVideosFilesSize" msprop:Generator_ColumnVarNameInTable="columnSumVideosFilesSize" msprop:Generator_ColumnPropNameInTable="SumVideosFilesSizeColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="WebCount" msprop:Generator_UserColumnName="WebCount" msprop:Generator_ColumnPropNameInRow="WebCount" msprop:Generator_ColumnVarNameInTable="columnWebCount" msprop:Generator_ColumnPropNameInTable="WebCountColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="SumWebFilesSize" msprop:Generator_UserColumnName="SumWebFilesSize" msprop:Generator_ColumnPropNameInRow="SumWebFilesSize" msprop:Generator_ColumnVarNameInTable="columnSumWebFilesSize" msprop:Generator_ColumnPropNameInTable="SumWebFilesSizeColumn" type="xs:long" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="ContentVecKey1">
+      <xs:selector xpath=".//mstns:ContentVec" />
+      <xs:field xpath="mstns:path" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

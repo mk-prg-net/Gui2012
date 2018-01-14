@@ -1,0 +1,47 @@
+﻿@model WebGraphics.Models.Polygon
+
+<h1>Canvas- Webgrafik</h1>
+
+<canvas id="can1" width="800" height="500"></canvas>
+
+@{
+    // Das Modell beschreibt mittels Grafikprimitive eine vom Anwender erzeugt Figur. Diese wird 
+    // jetzt im Browser mittels des Canvas- Html- Controls dargestellt. Dazu wird ein 
+    // Plotterobjekt aus dem Klasse mko.Graphic.WebClient instanziiert, welcher aus den 
+    // Daten der Graphikprimitive eine Liste von JavaScript- Anweisungen erzeugt. 
+    // Werden diese im Browser ausgeführt, dann wird die Figur im Canvas- Bereich gezeichnet.
+    
+    // Server- Komponente für das Canvas- Objekt erzeugen
+    var can1 = new mkoIt.Asp.HtmlCtrl.Canvas("can1");
+    
+    // Plotter an das Canvas- Objekt binden
+    var plotter = new mko.Graphic.WebClient.CanvasPlotter(can1.ScriptBld);
+
+    // Aus Liste der Grafikptimitive mit dem Plotter in eine Liste von JavaScript- Anweisungen zum zeichnen
+    // dieser erzeugen
+    Model.PolygonBlock.draw(plotter);
+    
+    // JavaScript Anweisungen als String ausgeben
+    var plotterScript = plotter.GetScript(true);
+
+    // Einbetten der Canvas- Javascript Anweisungen in eine pagaLoad- Methode, 
+    // und einbetten dieser in ein <script> Element. 
+    // Dann in ein MvcHtmlString konvertieren. Beim Download an den Browser wird sein
+    // Inhalt nicht Html- encodiert
+    var StartupScript = new MvcHtmlString(plotter.scriptBld.CreateMSAjaxPageLoadEventHandler(plotterScript, true));
+            
+    
+}
+
+@*
+    Einbetten des Scriptes
+*@
+@StartupScript
+
+<input id="Button1" type="button" value="refresh"  onclick="javascript: ();return false;"/>
+
+@*
+   Mit der folgenden Anweisung werden <script>- Tags erzeugt, welche die benötigten Scriptdateien
+   vom WebServer laden
+*@
+@Scripts.Render("~/Scripts/MSAjax/MicrosoftAjax.debug.js", "~/Scripts/mko/HtmlCanvas.js")

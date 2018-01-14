@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Ein Kommentar -->
+<Planeten xmlns="http://www.tracs.de/Planeten.xsd">
+  <!-- Noch ein Kommentar -->
+  <Planet name="Jupiter" >
+    <Durchmesser Einheit="km" Wert="142984"/>
+    <Mond name="Io">
+      <Durchmesser Einheit="m" Wert="3642000"/>
+    </Mond>
+    <Mond name="Europa">
+      <Durchmesser Einheit="km" Wert="3138"/>     
+    </Mond>
+    <Mond name="Ganymede">
+      <Durchmesser Einheit="km" Wert="5262"/>
+    </Mond>
+    <Mond name="Callisto">
+      <Durchmesser Einheit="km" Wert="4800"/>
+    </Mond>
+  </Planet>
+  <Planet name="Saturn" >
+    <Durchmesser Einheit="km" Wert="120660"/>
+    <Mond name="Titan">
+      <Durchmesser Einheit="km" Wert="5150"/>
+    </Mond>
+    <Mond name="Enceladus">
+      <Durchmesser Einheit="m" Wert="512000"/>
+    </Mond>
+    <Mond name="Dione">
+      <Durchmesser Einheit="km" Wert="118"/>
+    </Mond>
+    <Mond name="Tethys">
+      <Durchmesser Einheit="km" Wert="1071"/>
+    </Mond>
+    <Mond name="Reha">
+      <Durchmesser Einheit="km" Wert="1528"/>
+    </Mond>
+  </Planet>
+</Planeten>

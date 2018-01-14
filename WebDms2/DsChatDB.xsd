@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsChatDB" targetNamespace="http://tempuri.org/DsChatDB.xsd" xmlns:mstns="http://tempuri.org/DsChatDB.xsd" xmlns="http://tempuri.org/DsChatDB.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsChatDB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DsChatDB" msprop:Generator_UserDSName="DsChatDB">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Beitraege" msprop:Generator_TableClassName="BeitraegeDataTable" msprop:Generator_RowEvArgName="BeitraegeRowChangeEvent" msprop:Generator_TableVarName="tableBeitraege" msprop:Generator_TablePropName="Beitraege" msprop:Generator_RowDeletingName="BeitraegeRowDeleting" msprop:Generator_UserTableName="Beitraege" msprop:Generator_RowChangingName="BeitraegeRowChanging" msprop:Generator_RowDeletedName="BeitraegeRowDeleted" msprop:Generator_RowChangedName="BeitraegeRowChanged" msprop:Generator_RowEvHandlerName="BeitraegeRowChangeEventHandler" msprop:Generator_RowClassName="BeitraegeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="userid" msprop:Generator_ColumnVarNameInTable="columnuserid" msprop:Generator_ColumnPropNameInRow="userid" msprop:Generator_ColumnPropNameInTable="useridColumn" msprop:Generator_UserColumnName="userid" type="xs:string" minOccurs="0" />
+              <xs:element name="Beitrag" msprop:Generator_ColumnVarNameInTable="columnBeitrag" msprop:Generator_ColumnPropNameInRow="Beitrag" msprop:Generator_ColumnPropNameInTable="BeitragColumn" msprop:Generator_UserColumnName="Beitrag" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Beitraege" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

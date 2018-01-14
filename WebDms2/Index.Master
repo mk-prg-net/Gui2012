@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Index.master.cs" Inherits="GBLWeb.Index" %>
+
+<%@ Register Assembly="mko.Asp" Namespace="mkoIt.Asp" TagPrefix="mko" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body  id="htmlBody" runat="server">
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <div class="Ot6MasterHeader">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <colgroup>
+                <col width="*" />
+                <col width="200" align="right" />
+            </colgroup>
+            <tr>
+                <td>
+                    <asp:HyperLink ID="hlHeader" runat="server" NavigateUrl="~/Copyright.aspx" CssClass="Ot6MasterHeader1">            
+                        DMS 1.0
+                    </asp:HyperLink>
+                </td>
+                <td align="right">
+                    <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Bilder/mko-Logo-18-mal-52.gif"
+                        AlternateText="Hier sollte das MKIT Logo erscheinen" ImageAlign="AbsMiddle" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table width="100%">
+            <colgroup>
+                <col width="*" />
+                <col width="150" />
+                <col width="100" />
+            </colgroup>
+            <tr>
+                <td>
+                    <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                        <RootNodeStyle CssClass="SiteMapPathRootNode" />
+                        <NodeStyle CssClass="SiteMapPathNode" />
+                        <PathSeparatorTemplate>
+                            /</PathSeparatorTemplate>
+                        <CurrentNodeStyle CssClass="SiteMapPathCurrentNode" />
+                    </asp:SiteMapPath>
+                </td>
+                <td>
+                    Angemeldet als
+                    <asp:LoginName ID="LoginName1" runat="server" />
+                </td>
+                <td>
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" LoginText="Login" LogoutAction="Redirect"
+                        LogoutPageUrl="~/Default.aspx" LogoutText="Logout" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- Inhalt anzeigen -->
+    <div >
+        <asp:Panel ID="panDokInhalt" runat="server" Width="100%" CssClass="pTab">
+            <asp:Panel ID="panIndexHeader" runat="server" Width="100%" CssClass="pTabHeader">
+                <asp:ContentPlaceHolder ID="cphBody" runat="server">
+                </asp:ContentPlaceHolder>
+            </asp:Panel>
+            <asp:Panel ID="panIndex" runat="server" Width="100%" CssClass="pTabItem">
+                <mko:TableOfContentControl ID="TableOfContentControl1" runat="server" />
+            </asp:Panel>
+            <asp:Panel ID="panStatusBar" runat="server" BackColor="Menu" Width="100%">
+                <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Always">
+                    <ContentTemplate>
+                        <mko:StatusLabel ID="StatusLabelMaster" runat="server">
+                        </mko:StatusLabel>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </asp:Panel>
+        </asp:Panel>
+    </div>
+    </form>
+</body>
+</html>

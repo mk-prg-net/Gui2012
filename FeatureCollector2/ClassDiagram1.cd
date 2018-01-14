@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DMS.FCollect.DirFeatureCollector">
+    <Position X="3" Y="3.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAACAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>DirFeatureCollector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DMS.DirTree">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="DMS.DirTree.DirTreeProgressInfo" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Delegate Name="DMS.DirTree.DGEventProgress" Collapsed="true">
+        <TypeIdentifier />
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

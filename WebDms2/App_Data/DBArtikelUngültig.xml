@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Lieferanten2>
+    <lfnr>2</lfnr>
+    <name>Mercedes</name>
+    <!-- hier gibts zwei emails, weshalb das Dokument ungültig ist -->
+    <email>info@daimler.de</email>
+    <email>info@mercedes.de</email>
+    <plz>70000</plz>
+  </Lieferanten2>
+  <Lieferanten>
+    <lfnr>3</lfnr>
+    <name>VW</name>
+    <email>info@vw.de</email>
+    <plz>50000</plz>
+  </Lieferanten>
+  <Lieferanten>
+    <lfnr>1000</lfnr>
+    <name>BMW</name>
+    <email>info@bmw.de</email>
+    <plz>90000</plz>
+  </Lieferanten>
+  <Lieferanten>
+    <lfnr>2000</lfnr>
+    <name>tracs</name>
+    <email>11:27:53My@email.de</email>
+    <plz>70400</plz>
+  </Lieferanten>
+</NewDataSet>

@@ -1,0 +1,400 @@
+﻿/*
+	TRACS Optische Computer Sensorik (c) Stuttgart 2007
+
+	Martin Korneffel
+
+	Styles für das Layout von OT 6.0
+
+*/
+
+/* */
+a:link { color:Yellow; text-decoration:none; font-weight:bold; }
+a:visited { color:Yellow; text-decoration:none; font-weight:bold; }
+a:focus { color:Orange; text-decoration:none; font-weight:bold; }
+a:hover { color:Orange; text-decoration:none; font-weight:bold; }
+a:active { color:#CC0000; text-decoration:none; font-weight:bold; }
+
+/* Gestaltung des Kopfes der Masterseite */
+
+a.Ot6MasterHeader1:link { color:#CC0000; text-decoration:none; font-weight:bold; font-size:  }
+a.Ot6MasterHeader1:visited { color:#C00000; text-decoration:none; font-weight:bold; }
+a.Ot6MasterHeader1:focus { color:#C00000; text-decoration:none; font-weight:bold; }
+a.Ot6MasterHeader1:hover { color:#C00000; text-decoration:none; font-weight:bold; }
+a.Ot6MasterHeader1:active { color:#CC0000; text-decoration:none; font-weight:bold; }
+
+
+.Ot6MasterHeader 
+{
+	/* Hintergrund */
+	background-color: Silver;
+	
+	/* Schrift */
+	font-family:  Sans-Serif;
+	font-weight: bold;
+	font-size: 14pt;
+	color: Red;
+	
+	/* Ausrichtung */
+	text-align: left;
+	vertical-align: bottom;
+	
+	
+	/* Rahmen */
+	border-style: outset;
+	border-width: 4px;
+	border-color: Silver;
+	
+	height: 0.6cm;
+	
+	padding: 1mm
+	
+	
+}
+
+body 
+{
+	background-color: #404040;	
+	
+		/* Schrift */
+	font-family: Arial;
+	font-weight: normal;
+	font-size: 10pt;
+	color: White;
+}
+
+.BackgroundImage 
+{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment:fixed;
+}
+
+.LikeHyperLink 
+{
+	color: #284E98;
+	text-decoration: underline;
+}
+
+.Operation
+{
+	/* Bezeichner von Funktionsauswahllisten (klassisches Programm- Menü) */
+	color: White;
+	text-decoration: underline;
+	font-weight:bold;
+	font-size:10pt;
+}
+
+.OperationParameter
+{
+	background-color: #EFF3FB;
+	/*
+	border-style: inset;
+	border-color: ActiveBorder;
+	border-width: 3px;
+	*/
+	text-align: left;
+	color: Black;
+	font-size: 10pt;	
+}
+
+p.OperationParameter 
+{
+	color: Black;
+}
+
+/* Überschriften */
+.h1Tab
+{
+	width: 100%;	
+}
+
+.h1TabItem
+{
+	/* Ausrichtung des Zelleninhaltes */
+	text-align: left;
+	vertical-align: middle;
+	
+	/* Abstand des Inhaltes zum Zellenrand */
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;	
+	
+	/* Elemente aus Box mit Verlauf */
+	border-width: 1px;
+	border-style: solid;
+	border-color: #B1B1B1;
+	background-color: Transparent;
+	
+	
+	/* Elemente aus h1 */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	color: White;
+	
+}
+
+h3
+{
+	/* Elemente aus pseudoh3 */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: White;		
+}
+
+h4
+{
+	/* Elemente aus pseudoh3 */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #CC0000;	
+}
+
+/* Absätze */
+
+p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: White;
+}
+
+samp 
+{
+    background-color: black;
+}
+
+ol 
+{
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: White;
+
+}
+
+.pseudop {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: White;
+}
+
+.pTab 
+{
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 10px;	
+}
+
+.pTabHeader 
+{
+	/*height: 20px;	*/
+	
+	/* Ausrichtung des Zelleninhaltes */
+	text-align: left;
+	vertical-align: middle;
+	
+	/* Abstand des Inhaltes zum Zellenrand */	
+	padding-top: 3px;
+	padding-left: 0px;
+	padding-right: 10px;
+	padding-bottom: 3px;
+	
+	/* Elemente aus pseudoh3 */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: Yellow; /*#507CD1;	*/
+}
+
+.pTabItem
+{
+	/* Ausrichtung des Zelleninhaltes */
+	text-align: left;
+	vertical-align: top;	
+	
+	/* Abstand des Inhaltes zum Zellenrand */
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	
+	/* Elemente aus box */
+	border: 1px solid #B1B1B1;
+	background-color: Transparent;
+	
+	/* Format Text */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: White;
+}
+
+.beispiel 
+{
+    background-color: Black;
+    border-width: 2px;
+    border-style: outset;
+    padding: 3px;
+}
+
+.numValue
+{
+    text-align: right;
+    vertical-align:middle;
+}
+
+/*-------------------------------------------------------------------------------------*/
+/* Stylesheets zum Gestalten einer Tabelle zur Aflistung aller Entities                */     
+.AllEntitesTab 
+{
+	table-layout:fixed;
+	width: 100%;	
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.btnNewEntity 
+{
+	background-color: Green;
+	color: White;	
+}
+
+.btnDelete 
+{
+	background-color: #CC0000;
+	color: White;
+	
+}
+
+.btnSet 
+{
+	background-color:Blue;
+	color: White;
+	
+}
+
+.btnGoto
+{
+	background-color:Blue;
+	color: White;
+	width: 100%;
+}
+
+.btnSave
+{
+	background-color:Blue;
+	color: White;
+	width: 100%;
+}
+
+.tbx 
+{
+	width: 100%;
+}
+
+.dpdBox 
+{
+	width: 100%
+}
+
+.Label 
+{
+	background-color: Navy;
+	color: White;
+	width: 100%;
+}
+
+/*-------------------------------------------------------------------------------------*/
+/* Stylesheets zum Gestalten der SiteMapTab in den Default.aspx- Seiten				   */
+
+   
+.SiteMapTabRow 
+{
+	table-layout:fixed;
+	width: 100%;	
+	
+}
+
+.SiteMapTabRowCell 
+{
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #B1B1B1;
+	
+	width: 100%
+}
+
+.SiteMapTabCellInnerTab 
+{
+	table-layout:fixed;
+	width: 100%;
+}
+
+.SiteMapTabCellInnerTabRow1 
+{
+	width: 100%;
+}
+
+.SiteMapTabCellInnerTabRow2 
+{
+}
+
+.SiteMapTabCellInnerTabRow1Cell1 
+{
+	text-align: left;
+	vertical-align:middle;
+	
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+}
+
+.SiteMapTabCellInnerTabRow1Cell2 
+{
+	width: 50px;
+}
+
+.SiteMapTabCellInnerTabRow2Cell1 
+{
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+
+.SiteMapTabCellInnerTabRow2Cell2 
+{
+	width: 50px;
+}
+
+.SiteMapTabTitle 
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #CC0000;	
+}
+
+.SiteMapTabDescr 
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;	
+	color: #FFFFFF;	
+}	
+
+
+.SiteMapTabNavigateToPageButton 
+{
+}
+
+h2
+{
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+}

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="~/Default.aspx"
+				 title="Start"
+				 description="Einstieg in die Anwendung">
+		<siteMapNode url="~/AspBasics/Default.aspx"
+					 title="Basics"
+					 description="Asp.Net Grundlagen">
+			<siteMapNode url="~/AspBasics/SummeAusZwei.aspx"
+						 title="Summe aus Zwei"
+						 description="Einfache Anwendung ohne Validierung der Eingaben" />
+			<siteMapNode url="~/AspBasics/SummeAusZweiMitValidierung.aspx"
+						 title="Validierung(Summe aus Zwei)"
+						 description="Einfache Anwendung mit Validierung der Eingaben"/>
+			<siteMapNode url="~/AspBasics/LebenszyklusEvents.aspx"
+						 title="Lebenszyklus"
+						 description="Demo des Lebenszyklus einer Webform"/>
+			<siteMapNode url="~/AspBasics/SummeAusZweiMitKassenrolle.aspx"
+						 title="ViewState(Summe aus Zwei)"
+						 description="Einfache Anwendung mit Validierung der Eingaben und Protokollierung der Ergebnisse im Viewstate"/>
+			<siteMapNode url="~/AspBasics/HtmlControls.aspx"
+						 title="Klassische Html- Formularelemente"
+						 description ="Zugriff auf klassische HTML- Formularelemente" />
+			<siteMapNode url="~/AspBasics/WebServerControls.aspx"
+						 title="Websteuerelemente"
+						 description="Kapseln der HTML- Formularelemente mittels ASP.NET Steuerelemente"/>
+			<siteMapNode url="~/AspBasics/ImageMap.aspx"
+						 title="ImageMap"
+						 description="Bild mit sensitiven Regionen. Gute demo des Einsatzes von Viewstate und Sitzungen"/>
+			<siteMapNode url="~/AspBasics/ImageMap-Siegerehrung.aspx"
+						 title="ImageMap-Siegerehrung"
+						 description="Darstellung von Daten aus dem Sitzungszustand"/>
+			<siteMapNode url="~/AspBasics/Chat.aspx"
+						 title="Chat"
+						 description="Kommunikation mehrerer User über den Anwendungszustand"/>
+			<siteMapNode url="~/AspBasics/MultiView.aspx"
+						 title="Multiview"
+						 description="Oberfläche einer Webform durch MultiView vergrößern"/>
+			<siteMapNode url="~/AspBasics/RunatServer.aspx"
+						 title="runatServer"
+						 description="Wirkung von Runat=server Attribut"/>
+			<siteMapNode url="~/AspBasics/AuswahlDerOperartionen.aspx"
+						 title="Auswahl Op"
+						 description="-"/>
+			<siteMapNode url="~/AspBasics/WebFormMitMasterpage.aspx"
+						 title="Masterpages"
+						 description="Arbeiten mit Masterpages"/>
+			<siteMapNode url="~/AspBasics/AufEinerMasterseiteAufbauend.aspx"
+						 title="Masterpages 2"
+						 description="Arbeiten mit MAsterpages"/>
+			<siteMapNode url="~/AspBasics/Datenbindung.aspx"
+						 title="Datenbindungen"
+						 description="Steuerelemente an Daten binden - Automatisierte Datenabgleiche" />
+			<siteMapNode url="~/AspBasics/TreeUndMenu.aspx"
+						 title="Navigationssteuerelemente"
+						 description="Steuerelemente zur Navigation"/>
+			<siteMapNode url="~/AspBasics/Webpart.aspx"
+						 title="Webpart"
+						 description="-"/>
+			<siteMapNode url="~/AspBasics/WizzardDemo.aspx"
+						 title="Wizzard"
+						 description="Demo des Wizzard Steuerelementes"/>
+			<siteMapNode url="~/AspBasics/UserControlTest.aspx"
+						 title="Usercontrols"
+						 description="Einsatz von Usercontrols"/>
+		</siteMapNode>
+
+
+		<siteMapNode url="~/DBArtikel/Default.aspx"
+					 title="DB Artikel"
+					 description="Zugriff auf die DBArtikel Datenbank">
+			<siteMapNode url="~/DBArtikel/Lieferanten.aspx"
+						 title="Alle Lieferanten"
+						 description="Zugriff auf die Lieferantentabelle"/>
+			<siteMapNode url="~/DBArtikel/DataSourceDemo.aspx"
+						 title="Datenquellsteuerelemente"
+						 description="Verbinden von Datenquellen mit Websteuerelementen"/>
+		</siteMapNode>
+
+		<siteMapNode url="~/FileFeatures/Default.aspx"
+					 title="DMS"
+					 description="Demo- Anwendung">
+			<siteMapNode url="~/FileFeatures/FileTable.aspx"
+						 title="Dateitabelle"
+						 description="Tabellarische Liste aller erfasster Dateien" />
+			<siteMapNode url="~/FileFeatures/Leuchttisch.aspx"
+						 title="Leuchttisch"
+						 description="Präsentation aller Bilder" />
+			<siteMapNode url="~/FileFeatures/StatCharts.aspx"
+						 title="Statistiken"
+						 description="Statistische Auswertung über der erfassten Dateimenge" />
+			<siteMapNode url="~/FileFeatures/Reports.aspx"
+						 title="Berichte"
+						 description="Berichte erzeugen und Anzeigen" />
+		</siteMapNode>
+
+		<siteMapNode url="~/Html5Canvas/Default.aspx"
+					 title="Html5 Canvas"
+					 description ="Vektorgrafiken in HTML 5 mit dem Canvas- Steuerelement">
+			<siteMapNode url="~/Html5Canvas/Polygonator.aspx"
+						 title="Polygonator" />
+		</siteMapNode>
+
+		<siteMapNode url="~/Physik/Default.aspx" title="Physik"
+					 description ="Physikalische Berechnungen">
+			<siteMapNode url="~/Physik/Ballistik.aspx"
+						 title="Ballistik" />
+		</siteMapNode>
+
+
+		<siteMapNode url="~/AdminFunktionen.aspx"
+					 title="Admin Funktionen"
+					 description="Funktionalität auf einer Seite teilweise von der Gruppenzugehörigkeit abhängig machen"/>
+
+	</siteMapNode>
+</siteMap>

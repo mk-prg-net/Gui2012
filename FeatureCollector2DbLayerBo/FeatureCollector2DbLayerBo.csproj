@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F124A688-6059-455C-BB67-D2264DEB6248}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FeatureCollector2DbLayerBo</RootNamespace>
+    <AssemblyName>FeatureCollector2DbLayerBo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoFilesBasic.cs" />
+    <Compile Include="BoSizePerFileClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FeatureCollector2DbLayer\FeatureCollector2DbLayer.csproj">
+      <Project>{62037B3D-9361-4AA1-B6F5-4D5EA5D423E7}</Project>
+      <Name>FeatureCollector2DbLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FeatureCollector2\FeatureCollector2.csproj">
+      <Project>{D7E3A978-FFC2-4C46-8827-FFCE9C5463FF}</Project>
+      <Name>FeatureCollector2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileClassificator\FileClassificator.csproj">
+      <Project>{9F5EE10A-9462-4F46-A3A2-0F58AA856BA5}</Project>
+      <Name>FileClassificator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mko.Db\mko.Db.csproj">
+      <Project>{94508F85-6BE9-4591-BBAB-B3064460B503}</Project>
+      <Name>mko.Db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mko\mko\mko.csproj">
+      <Project>{FD808F4F-00BD-4BC6-8142-EF944200C901}</Project>
+      <Name>mko</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,25 @@
+﻿body {
+}
+
+.Console {
+    background-color: #808080;
+    width: 200px;
+    float: left;
+}
+
+.ConsoleButton {
+    background-color: #f00;
+    color: #fff;
+    font-weight: bolder;
+    width: 80px;
+}
+
+.ConsoleLink {
+    background-color: #f00;
+    color: #fff;
+    font-weight: bolder;
+    width: 80px;
+    text-decoration-style: none;    
+    border-style: outset;
+    border-width: 2px;
+}

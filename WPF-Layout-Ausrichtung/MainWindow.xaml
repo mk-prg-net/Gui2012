@@ -1,0 +1,55 @@
+﻿<Window x:Class="WPF_Layout_Ausrichtung.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Layout-Ausrichtung"
+        Height="700"
+        Width="1000">
+    <Window.BorderBrush>
+        <LinearGradientBrush EndPoint="1,0.5"
+                             StartPoint="0,0.5">
+            <GradientStop Color="#FFFC0D0D"
+                          Offset="0" />
+            <GradientStop Color="#FF1A1919"
+                          Offset="1" />
+        </LinearGradientBrush>
+    </Window.BorderBrush>
+    <Window.Resources>
+        <Style x:Key="MyBorderStyele">
+
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300" />
+            <RowDefinition Height="300" />
+        </Grid.RowDefinitions>
+        <!-- Margins -->
+        <StackPanel Grid.Row="0">
+            <Label>Margins</Label>
+            <Border  BorderThickness="3"
+                     BorderBrush="Black">
+                <Border BorderThickness="3"
+                        BorderBrush="Red"
+                        Margin="20">
+                    <Border BorderThickness="3"
+                            Margin="100, 10"
+                            BorderBrush="Green">
+                        <Border BorderThickness="3"
+                                Margin="100, 10, 50, 100"
+                                Height="10"
+                                BorderBrush="Blue">
+                        </Border>
+                    </Border>
+                </Border>
+            </Border>
+            <Line X1="0" Y1="0" X2="1000" Y2="50" Stroke="Red" StrokeThickness="10"/>
+        </StackPanel>
+        <!-- Aligment -->
+        <StackPanel Grid.Row="1">
+            <Label HorizontalAlignment="Left">Left</Label>
+            <Label HorizontalAlignment="Center">Center</Label>
+            <Label HorizontalAlignment="Right">Right</Label>            
+        </StackPanel>
+
+    </Grid>
+</Window>

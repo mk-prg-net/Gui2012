@@ -1,0 +1,246 @@
+﻿<!-- Achtung: Damit Benutzerdefinierte Typen in XAML nutzbar sind, müssen die für NAmespaces,
+     in die sie eingeschlossen sind, Namespacepräfixe wie local vereinbart werden -->
+    <Window x:Class="WPF_Steuerelemente.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        
+    xmlns:local="clr-namespace:WPF_Steuerelemente"
+        
+        
+        Title="Demo WPF Steuerelemente" Height="400" Width="600">
+    <!-- Demo WPF Steuerelemente: Martin Korneffel, 2010-->
+    <Window.Resources>
+        <Style x:Key="MenuStyle" TargetType="Menu">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <x:ArrayExtension x:Key="UrlFavoriten" Type="local:LabledUri">
+            <local:LabledUri UriLabel="Hier kann man was lernen" Uri="http://www.mkoit.de" />
+            <local:LabledUri UriLabel="Tolle Messtechnik" Uri="http://www.tracs.de" />
+            <local:LabledUri UriLabel="Ferne Welten" Uri="ttp://mars.jpl.nasa.gov/mro/" />
+        </x:ArrayExtension>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu -->
+        <Menu Style="{StaticResource MenuStyle}" Grid.Row="0" FontFamily="Times New Roman">
+            <MenuItem Name="mnuFile" Header="_Datei">
+                <MenuItem Name="mnuOpenFile" Header="Ö_ffnen"></MenuItem>
+                <MenuItem Name="mnuSaveFile" Header="_Sichern"></MenuItem>
+                <MenuItem Name="mnuExit" Header="beenden" Click="mnuExit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <!-- Toolbar -->
+
+        <ToolBarTray Grid.Row="1" Name="toolBarTray1" Margin="0,0,0,15" Grid.RowSpan="2">
+            <ToolBar Name="tbarAllgemein" Height="30" Band="0" BandIndex="1" >
+                <Button Name="btnOpenFile" ToolTip="Datei Öffnen" >
+                    <Button.Content>
+                        <Image Source="/WPF-Steuerelemente;component/openfolderHS.png" />
+                    </Button.Content>
+                </Button>
+                <Button Name="btnSaveFile" ToolTip="Datei Sichern" >
+                    <Button.Content>
+                        <Image Source="/WPF-Steuerelemente;component/saveHS.png" />
+                    </Button.Content>
+                </Button>
+                <TextBox Name="tbxColor" Width="50"/>
+            </ToolBar>
+            <ToolBar Name="tbarEffects" Height="30" Band="0" BandIndex="0">
+                <Button Name="GlowEffect" ToolTip="Gühen">
+                    <Button.Content>
+                        <Image Source="/WPF-Steuerelemente;component/RadialChartHS.png" />
+                    </Button.Content>
+                </Button>
+                <Button Name="ShadowEffect" ToolTip="Schatten">
+                    <Button.Content>
+                        <Image Source="/WPF-Steuerelemente;component/EditBrightContrastHS.png" />
+                    </Button.Content>
+                </Button>
+                <Button Name="TransformEffect" ToolTip="Scherung">
+                    <Button.Content>
+                        <Image Source="/WPF-Steuerelemente;component/CutHS.png" />
+                    </Button.Content>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- Inhalt -->
+
+        <TabControl  Name="tabControlMain" Grid.Row="2"  >
+            <TabItem Header="Log" Name="tabItem1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>                    
+                    <ScrollViewer Grid.Column="0"  HorizontalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <Button Height="30">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/WPF-Steuerelemente;component/DeleteHS.png"  HorizontalAlignment="Left"/>
+                                        <Label>Alle löschen</Label>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <ScrollViewer Grid.Column="1"  HorizontalScrollBarVisibility="Auto">
+                        <ListBox Name="lbxLog" ></ListBox>
+                    </ScrollViewer>
+                    <GridSplitter  
+                        Grid.Column="1"
+                        Name="gridSplitter1" HorizontalAlignment="Left" Width="5" Background="Red" ShowsPreview="False" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Frame" Name="tabItem2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ComboBox Grid.Row="0" Height="30" SelectionChanged="ComboBox_SelectionChanged" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Label Content="{Binding UriLabel}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <ComboBox.Items>
+                            <ComboBoxItem>
+                                <ComboBoxItem.Content>
+                                    <local:LabledUri UriLabel="Hier kann man was lernen" Uri="http://www.mkoit.de" />
+                                </ComboBoxItem.Content>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <ComboBoxItem.Content>
+                                    <local:LabledUri UriLabel="Tolle Messtechnik" Uri="http://www.tracs.de" />
+                                </ComboBoxItem.Content>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <ComboBoxItem.Content>
+                                    <local:LabledUri UriLabel="Ferne Welten" Uri="http://mars.jpl.nasa.gov/mro/" />
+                                </ComboBoxItem.Content>
+                            </ComboBoxItem>
+                        </ComboBox.Items>
+                    </ComboBox>
+                    <Frame Grid.Row="1" Name="frameXmp" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Listen" Name="tabItem3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Label>Listbox einfacher Content</Label>
+                        <ListBox SelectionChanged="ListBox_SelectionChanged">
+                            <ListBoxItem Name="Anton" Content="4711"/>
+                            <ListBoxItem Name="Berta" Content="0815" />
+                            <ListBoxItem Name="Cäsar">
+                                <ListBoxItem.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        
+                                        <Image Source="/WPF-Steuerelemente;component/RadialChartHS.png" />
+                                        <Label>Cäsar</Label>
+                                    </StackPanel>
+                                </ListBoxItem.Content>
+                            </ListBoxItem>
+                            <ListBoxItem Name="Dora" Content="1234" />
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Label>Content von selbstdef. Typ</Label>
+                        <ListBox>
+                            <ListBox.Items>
+                                <ListBoxItem>
+                                    <local:LabledUri Uri="4711" UriLabel="Anton"/>
+                                </ListBoxItem>
+                                <ListBoxItem>
+                                    <local:LabledUri Uri="0815" UriLabel="Berta"/>
+                                </ListBoxItem>
+                                <ListBoxItem>
+                                    <local:LabledUri Uri="6996" UriLabel="Cäsar"/>
+                                </ListBoxItem>
+                            </ListBox.Items>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <Label>Items gebunden</Label>
+                        <!--
+                        <ListBox ItemsSource="{StaticResource UrlFavoriten}">   
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Label Content="{Binding UriLabel}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <ListBox.ItemsPanel>                                
+                                <ItemsPanelTemplate>
+                                    <StackPanel HorizontalAlignment="Stretch" Background="Red"/>
+                                </ItemsPanelTemplate>                                
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                       -->
+                    </StackPanel>
+                    <StackPanel Grid.Column="3">
+                        <Label>Items an DB gebunden</Label>
+                        <ListBox ItemsSource="{Binding}" Loaded="ListBox_Loaded" Height="50">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Label Content="{Binding name}" />
+                                        <Label Content="{Binding lfnr}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel HorizontalAlignment="Stretch" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Datenbindungen" Name="tabItem4">
+                <WrapPanel>
+                    <StackPanel>
+                        <TextBox Name="tbxInput" Width="50"/>
+                        <Label>
+                            <Label.Content>
+                                <Binding ElementName="tbxInput" Path="Text"/>
+                            </Label.Content>
+                        </Label>
+                    </StackPanel>
+                    <TextBox Width="50" Height="20" VerticalAlignment="Top" Text="Lime">
+                        <TextBox.Background>
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Text"/>
+                        </TextBox.Background>
+                    </TextBox>
+                </WrapPanel>
+
+            </TabItem>
+        </TabControl>
+
+        <StatusBar Grid.Row="3">
+
+        </StatusBar>
+
+    </Grid>
+</Window>
+    
